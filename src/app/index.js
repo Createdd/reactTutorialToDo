@@ -6,12 +6,15 @@ var TodoComponent = React.createClass({
   render:function(){
     return(
       <div>
-        <h1>Helooo</h1>
-        <p>Test</p>
+        <p><strong>Wine name: </strong>{this.props.wine.name}</p>
+        <p><strong>Wine smell factor: </strong>{this.props.wine.smellFactor}</p>
+        <p><strong>Wine price: </strong>{this.props.wine.price}</p>
       </div>
-    );
+    );//grab this component and put a reference to the render method
   }
-});
+});//create a TodoComponent
+
+var myWine={name: "Mount Blanc", smellFactor:"very flowery", price: "99"};
 
 //Put component into html page
-ReactDOM.render(<TodoComponent/>, document.getElementById("todo-wrapper"));
+ReactDOM.render(<TodoComponent mssg="I like wine" wine={myWine}/>, document.getElementById("todo-wrapper"));
