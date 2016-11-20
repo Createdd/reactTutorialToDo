@@ -4,6 +4,7 @@ require("./css/index.css");
 
 //module requires
 var TodoItem=require("./todoItem");//webpack allows this splitting up in modules
+var AddItem=require("./addItem");
 
 //Create components with react class method
 var TodoComponent = React.createClass({
@@ -26,6 +27,7 @@ var TodoComponent = React.createClass({
         <p>Busiest people work hard</p>
         <p>{this.state.age}</p>
         <ul>{todos}</ul>
+        <AddItem onAdd={this.onAdd}/>
       </div>
     );//grab this component and put a reference to the render method
   },//use the render method to output data
@@ -38,7 +40,18 @@ var TodoComponent = React.createClass({
     this.setState({
       todos:updatedTodos
     });//set a new State with the new array
-  }//onDelete function
+  },//onDelete function
+
+  onAdd:function(item){
+    var updatedTodos=this.state.todos;//store the current array in a variable
+    updatedTodos.push(item);
+    this.setState({
+      todos:updatedTodos
+    });//set a new State with the new array
+  }
+
+
+
 });//create a TodoComponent
 
 //Put component into html page
