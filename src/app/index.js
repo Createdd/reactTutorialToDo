@@ -5,26 +5,24 @@ var ReactDOM = require("react-dom");
 var TodoComponent = React.createClass({
   getInitialState:function(){
     return{
-      todos:["training", "learning", "working"],
-      age:25
+      todos:["training", "learning", "working", "work more"]
     }
   },
 
   render:function(){
-    var ager=setTimeout(function(){
-      this.setState({
-        age:35
-      });
-    }.bind(this),5000);
+
+    var todos=this.state.todos;//local version of the state variable
+    todos = todos.map(function(item,index){
+      return(
+        <li>{item}</li>
+      );
+    });
+
     return(
       <div id="todo-list">
         <p>Busiest people work hard</p>
         <p>{this.state.age}</p>
-        <ul>
-          <li>{this.state.todos[0]}</li>
-          <li>{this.state.todos[1]}</li>
-          <li>{this.state.todos[2]}</li>
-        </ul>
+        <ul>{todos}</ul>
       </div>
     );//grab this component and put a reference to the render method
   }//use the render method to output data
