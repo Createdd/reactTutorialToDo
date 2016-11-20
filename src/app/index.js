@@ -1,5 +1,9 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
+require("./css/index.css");
+
+//module requires
+var TodoItem=require("./todoItem");//webpack allows this splitting up in modules
 
 //Create components with react class method
 var TodoComponent = React.createClass({
@@ -36,25 +40,6 @@ var TodoComponent = React.createClass({
     });//set a new State with the new array
   }//onDelete function
 });//create a TodoComponent
-
-var TodoItem=React.createClass({
-  render: function(){
-    return(
-      <li>
-        <div className="todo-item">
-          <span className="item-name">{this.props.item} </span>
-          <span className="item-delete" onClick={this.handleDelete}> X</span>
-        </div>
-      </li>
-    );
-  },//render
-
-  //custom functions
-  handleDelete:function(){
-    this.props.onDelete(this.props.item);
-  }
-});//create a TodoItemComponent
-
 
 //Put component into html page
 ReactDOM.render(<TodoComponent/>, document.getElementById("todo-wrapper"));
